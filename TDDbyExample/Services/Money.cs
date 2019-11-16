@@ -12,7 +12,7 @@ namespace TDDbyExample.Services
         public bool Equals(Object obj)
         {
             Money money = (Money)obj;
-            return amount == money.amount;
+            return amount == money.amount && GetType().Equals(obj.GetType());
         }
     }
 }
