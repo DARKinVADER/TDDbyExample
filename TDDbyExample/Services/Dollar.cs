@@ -2,24 +2,16 @@
 
 namespace TDDbyExample.Services
 {
-    public class Dollar
+    public class Dollar : Money
     {
         public Dollar(int amount)
         {
-            Amount = amount;
+            base.amount = amount;
         }
-
-        public int Amount { get; set; }
 
         public Dollar Times(int multiplier)
         {
-            return new Dollar(Amount * multiplier);
-        }
-
-        public bool Equals(Object obj)
-        {
-            Dollar dollar = (Dollar)obj;
-            return Amount == dollar.Amount;
+            return new Dollar(amount * multiplier);
         }
     }
 }

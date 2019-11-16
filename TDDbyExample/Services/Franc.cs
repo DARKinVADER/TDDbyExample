@@ -2,24 +2,16 @@
 
 namespace TDDbyExample.Services
 {
-    public class Franc
+    public class Franc : Money
     {
         public Franc(int amount)
         {
-            Amount = amount;
+            base.amount = amount;
         }
-
-        public int Amount { get; set; }
 
         public Franc Times(int multiplier)
         {
-            return new Franc(Amount * multiplier);
-        }
-
-        public bool Equals(Object obj)
-        {
-            Franc Franc = (Franc)obj;
-            return Amount == Franc.Amount;
+            return new Franc(amount * multiplier);
         }
     }
 }
