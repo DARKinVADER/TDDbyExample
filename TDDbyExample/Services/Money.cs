@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TDDbyExample.Services
 {
-    public abstract class Money
+    public class Money
     {
         protected int amount;
         protected string currency;
@@ -20,15 +20,13 @@ namespace TDDbyExample.Services
         public bool Equals(Object obj)
         {
             Money money = (Money)obj;
-            return amount == money.amount && GetType().Equals(obj.GetType());
+            return amount == money.amount && Currency().Equals(money.Currency());
         }
 
         public static Money Dollar(int amount)
         {
             return new Dollar(amount, "USD");
         }
-
-        public abstract Money Times(int multiplier);
 
         public static Money Franc(int amount)
         {
@@ -38,7 +36,17 @@ namespace TDDbyExample.Services
         public string Currency()
         {
             return currency;
-
         }
+
+        public string toString()
+        {
+            return amount + " " + currency;
+        }
+
+        public Money Times(int multiplier)
+        {
+            return new Money(amount * multiplier, currency);
+        }
+
     }
 }
