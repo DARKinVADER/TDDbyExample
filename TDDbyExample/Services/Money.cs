@@ -8,6 +8,14 @@ namespace TDDbyExample.Services
     public abstract class Money
     {
         protected int amount;
+        protected string currency;
+
+        public Money(int amount, string currency)
+        {
+            this.amount = amount;
+            this.currency = currency;
+        }
+
 
         public bool Equals(Object obj)
         {
@@ -17,14 +25,20 @@ namespace TDDbyExample.Services
 
         public static Money Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
         public abstract Money Times(int multiplier);
 
         public static Money Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
+        }
+
+        public string Currency()
+        {
+            return currency;
+
         }
     }
 }
