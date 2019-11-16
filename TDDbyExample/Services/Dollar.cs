@@ -1,4 +1,6 @@
-﻿namespace TDDbyExample.Services
+﻿using System;
+
+namespace TDDbyExample.Services
 {
     public class Dollar
     {
@@ -9,9 +11,15 @@
 
         public int Amount { get; set; }
 
-        public void Times(int multiplier)
+        public Dollar Times(int multiplier)
         {
-            Amount *= multiplier;
+            return new Dollar(Amount * multiplier);
+        }
+
+        public bool Equals(Object obj)
+        {
+            Dollar dollar = (Dollar)obj;
+            return Amount == dollar.Amount;
         }
     }
 }
